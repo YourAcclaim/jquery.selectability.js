@@ -73,7 +73,7 @@ Selectability.prototype.buildElements = function () {
   this.combobox = $('<div></div>')
     .addClass('selectability')
     .attr({
-      role: 'combobox application',
+      role: 'combobox',
       tabindex: 0,
       'aria-expanded': 'false'
     });
