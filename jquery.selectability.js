@@ -134,7 +134,7 @@ Selectability.prototype.synchronizeAttributes = function () {
   this.disabled = !!this.element.prop('disabled');
   this.combobox.attr({
     'aria-disabled': this.disabled,
-    'aria-required': !!this.element.prop('required')
+    'aria-required': !!this.element.attr('aria-required')
   });
 };
 
