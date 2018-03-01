@@ -134,7 +134,7 @@ Selectability.prototype.synchronizeAttributes = function () {
   this.disabled = !!this.element.prop('disabled');
   this.combobox.attr({
     'aria-disabled': this.disabled,
-    'aria-required': !!this.element.prop('required')
+    'aria-required': !!this.element.attr('aria-required')
   });
 };
 
@@ -250,7 +250,7 @@ Selectability.prototype.listboxClick = function(event) {
 
   this.setActive($(event.target));
   this.closeCombobox();
-  
+
 
   event.preventDefault();
   return false;
@@ -273,7 +273,7 @@ Selectability.prototype.setActive = function(active) {
   // some frameworks read element.val() instead of the event value
   // so we populate the value and restore it (see below) if the event is canceled
   this.element.val(value);
-  
+
   try {
     // work around event handlers throwing exceptions
     this.element.trigger(event);
@@ -285,7 +285,7 @@ Selectability.prototype.setActive = function(active) {
     } else {
       // if the event is prevented, restore the old value
       this.element.val(prev);
-    } 
+    }
   }
 };
 
@@ -296,7 +296,7 @@ Selectability.prototype.listboxKeydown = function(event) {
       this.setActive($(event.target));
       this.closeCombobox();
       this.combobox.focus();
-      
+
       event.preventDefault();
       return false;
 
@@ -321,7 +321,7 @@ Selectability.prototype.toggleCombobox = function() {
     this.openCombobox();
 
     // We may have an empty select widget, so we can't always depend on
-    // `active' being defined  
+    // `active' being defined
     if (this.active) {
       this.active.focus();
     }
