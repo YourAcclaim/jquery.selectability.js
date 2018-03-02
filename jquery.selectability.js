@@ -56,7 +56,7 @@ function Selectability(element) {
 }
 
 Selectability.prototype.buildElements = function () {
-  this.selectedbox = $('<input></input>')
+  this.selectedbox = $('<div></div>')
     .attr({
       type: 'text',
       tabindex: -1,
