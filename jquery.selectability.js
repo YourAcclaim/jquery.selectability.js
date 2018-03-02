@@ -56,9 +56,9 @@ function Selectability(element) {
 }
 
 Selectability.prototype.buildElements = function () {
-  this.textbox = $('<div></div>')
+  this.selectedbox = $('<div></div>')
     .attr({
-      role: 'textbox',
+      type: 'text',
       tabindex: -1,
       'aria-readonly': 'true'
     });
@@ -79,7 +79,7 @@ Selectability.prototype.buildElements = function () {
     });
 
   this.combobox
-    .append(this.textbox)
+    .append(this.selectedbox)
     .append(this.listbox);
 
   this.element
@@ -122,7 +122,7 @@ Selectability.prototype.populateText = function (event) {
 
   var selected = this.element.find(':selected');
   if (selected.length) {
-    this.textbox.text(selected.attr('label') || selected.text());
+    this.selectedbox.text(selected.attr('label') || selected.text());
   }
 }
 
@@ -281,7 +281,7 @@ Selectability.prototype.setActive = function(active) {
     // promote 'change' to a cancelable event
     if (!event.isDefaultPrevented()) {
       this.active = active;
-      this.textbox.text(active.attr('label') || active.text());
+      this.selectedbox.text(active.attr('label') || active.text());
     } else {
       // if the event is prevented, restore the old value
       this.element.val(prev);
